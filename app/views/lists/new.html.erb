@@ -6,12 +6,13 @@
 <%= simple_form_for(@list) do |f| %>
   <%= f.input :name %>
   <%= f.input :photo, as: :file %>
-  <%= link_to "Cancel", :back %>
-  <%= f.button :submit, class:"btn btn-outline-dark" %>
+  <%= f.button :submit,  class: "btn btn-success" %>
+  <%= link_to "Never mind", :back, class: "btn btn-danger" %>
+
 <% end %>
 
-<h2><%= link_to "return to lists", root_path, class: "btn btn-default" %></h2>
- </div>
+<h2><%= link_to "Return to my lists", root_path, class: "btn btn-link" %></h2>
+      </div>
     </div>
   </div>
 </div>

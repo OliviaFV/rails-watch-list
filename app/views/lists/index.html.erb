@@ -1,24 +1,21 @@
 <div class="banner" style="background-image: linear-gradient(rgba(0,0,0,0.4),rgba(255,255,255,255)), url(https://raw.githubusercontent.com/lewagon/fullstack-images/master/uikit/background.png);">
   <div class="container">
-    <h1>This is a list of <strong>ALL MY MOVIES </strong>!</h1>
-    <p>Or others I have yet to see...</p>
+    <h1>This is a list of <strong>all my movies</strong>!</h1>
   </div>
 </div>
-
-<%= link_to  "Create a new list", new_list_path, class: "btn btn-outline-success" %>
-
-  <ul>
-  <% @lists.each do |list| %>
-  <div class="cards">
-  <div class="card-category" style="background-image: linear-gradient(rgba(94, 187, 0), rgba(0,0,0,0.3))">
-  <li><%= link_to list.name, list_path(list) %></li>
-    <% if list.photo.attached? %>
-    <%= cl_image_tag list.photo.key, height: 300, width: 400, crop: :fill %>
-
-    <% else %>
-      <%= cl_image_tag list.photo.key, height: 300, width: 400, crop: :fill %>
-    <% end  %>
-  <% end %>
- </div>
+<div class="container-fluid m-6">
+<%= link_to  "Create a new list", new_list_path, class: "btn btn-success" %>
 </div>
-  </ul>
+<div class="container-fuild">
+  <div class="d-flex align-items-center">
+    <% @lists.each do |list| %>
+    <% if list.photo.attached? %>
+      <div class="shadow p-5 m-3 col rounded-3" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.3)), url('<%= cl_image_path list.photo.key, height: 200, crop: :fill %>')">
+    <% else %>
+      <div class="shadow p-5 m-3 col" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.3)), url('<%= cl_image_path list.photo.key, height: 300, crop: :fill %>')">
+    <% end %>
+        <%= link_to list.name, list_path(list), class: "fw-bold text-white" %>
+      </div>
+    <% end %>
+  </div>
+</div>
