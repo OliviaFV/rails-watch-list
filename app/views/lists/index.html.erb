@@ -1,8 +1,24 @@
-<h1> LIST OF ALL MOVIES </h1>
-<ul>
-<% @lists.each do |list| %>
-<li><%= link_to list.name, list_path(list) %></li>
-<% end %>
-</ul>
+<div class="banner" style="background-image: linear-gradient(rgba(0,0,0,0.4),rgba(255,255,255,255)), url(https://raw.githubusercontent.com/lewagon/fullstack-images/master/uikit/background.png);">
+  <div class="container">
+    <h1>This is a list of <strong>ALL MY MOVIES </strong>!</h1>
+    <p>Or others I have yet to see...</p>
+  </div>
+</div>
 
-<%= link_to  "New list", new_list_path, class: "btn btn-secondary" %>
+<%= link_to  "Create a new list", new_list_path, class: "btn btn-outline-success" %>
+
+  <ul>
+  <% @lists.each do |list| %>
+  <div class="cards">
+  <div class="card-category" style="background-image: linear-gradient(rgba(94, 187, 0), rgba(0,0,0,0.3))">
+  <li><%= link_to list.name, list_path(list) %></li>
+    <% if list.photo.attached? %>
+    <%= cl_image_tag list.photo.key, height: 300, width: 400, crop: :fill %>
+
+    <% else %>
+      <%= cl_image_tag list.photo.key, height: 300, width: 400, crop: :fill %>
+    <% end  %>
+  <% end %>
+ </div>
+</div>
+  </ul>

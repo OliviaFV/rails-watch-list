@@ -1,6 +1,17 @@
-<div>
+
+<div class="container py-5">
+  <div class="row">
+    <div class="col-12 col-md-6 offset-lg-3">
+      <div class="bg-white rounded p-3 shadow" >
 <%= simple_form_for(@list) do |f| %>
   <%= f.input :name %>
-  <%= f.submit %>
+  <%= f.input :photo, as: :file %>
+  <%= link_to "Cancel", :back %>
+  <%= f.button :submit, class:"btn btn-outline-dark" %>
 <% end %>
+
+<h2><%= link_to "return to lists", root_path, class: "btn btn-default" %></h2>
+ </div>
+    </div>
+  </div>
 </div>
